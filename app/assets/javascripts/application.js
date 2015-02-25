@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require superhero/loader
+//= require superhero/bootswatch
 //= require turbolinks
-//= require_tree .
+
