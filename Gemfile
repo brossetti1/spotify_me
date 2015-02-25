@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -39,6 +39,11 @@ gem 'pry-rails'
 # spotify api
 gem 'rspotify'
 
+# bootswatcb for rails, bootstrap templates
+gem 'twitter-bootswatch-rails', '~> 3.3'
+gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
+gem 'twitter-bootswatch-rails-helpers'
+
 group :development, :test do
   gem 'seed_dump'
   gem 'better_errors'
@@ -57,6 +62,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'annotate', '~> 2.6.5'
   gem 'kramdown', :groups => [:development], :require => false
+  gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
 end
 
 
