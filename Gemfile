@@ -59,7 +59,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'  
-  gem 'sqlite3'
   gem 'annotate', '~> 2.6.5'
   gem 'kramdown', :groups => [:development], :require => false
   gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
