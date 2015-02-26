@@ -5,20 +5,23 @@ class HomeController < ApplicationController
   end
 
   def spotify_search
-    binding.pry
     @search_results = []
+    binding.pry
     if search_params
+      tracks = RSpotify::Track.search(search_params, limit: 10)
       # artists = RSpotify::Artist.search('Arctic Monkeys')
       # playlists = RSpotify::Playlist.search('Indie')
       # albums = RSpotify::Album.search('The Wall')
+      @query = search_params
       @count = tracks.total
-      @search_results = RSpotify::Track.search(search_params, limit: 10)
+      @search_results = tracks
     end
-    redirect_to :show
+
+    render :show
   end
 
   def show
-    
+
   end
 
 
