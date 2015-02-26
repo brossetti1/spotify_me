@@ -9,6 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  album      :string
+#  user_id    :integer
 #
 
 class Song < ActiveRecord::Base
@@ -16,12 +17,13 @@ class Song < ActiveRecord::Base
 
 
 
-  def process_song(spotify_id)
+  def process_song(spotify_id, user)
     track = Song.find_track(spotify_id)
     self.artist = track.artists.first.name
     self.title = track.name
     self.spotify_id = spotify_id
     self.album = track.album.name
+    self.user_id = user.id
   end
 
   def self.find_track(id)

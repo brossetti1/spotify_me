@@ -9,7 +9,7 @@ class HomeController < ApplicationController
    # binding.pry
     if search_params
       tracks = RSpotify::Track.search(search_params, limit: 10)
-      # artists = RSpotify::Artist.search('Arctic Monkeys')
+      # artists = RSpotify::Artist.search(search_params, limit: 10)
       # playlists = RSpotify::Playlist.search('Indie')
       # albums = RSpotify::Album.search('The Wall')
       @query = search_params

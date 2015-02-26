@@ -1,17 +1,15 @@
 <h2 style='margin-top: 150px;'>songs</h2>
 
-<h4>search results for <span><%= @query %></span></h4>
+<h4>search results for <span>"<%= @query %>"</span></h4>
 
   <ul>
-    <li><%= song.name %>,
-      <!--  spotify id: <%= song.id %>, -->
   <% @search_results.each do |song| %>
     <li>
     
-        song: <%= song.name %>,
-        spotify id: <%= song.id %>, 
+        <h3>song: <%= song.name %>,
+            artist: <%= song.artists.first.name %>,
         <!-- images_urls: <#%= song.images %>, -->
-        spotify popularity <%= song.popularity %>
+        spotify popularity <%= song.popularity %></h3>
 
       <div class="submitSong">
         <%= form_tag suggestion_path(current_user, pick: song.id), method: 'post' %>
