@@ -21,7 +21,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
+post 'users/:id/vote', to: 'users#vote', as: :vote
+post 'users/:id/veto', to: 'users#veto', as: :veto
+post 'users/:id/suggestion', to: 'users#suggest', as: :suggestion
 root to: 'home#index'
+get '/search', to: 'home#spotify_search', as: :spotify_search
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

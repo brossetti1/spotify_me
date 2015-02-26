@@ -55,13 +55,14 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
+  # <% require 'pry'; binding.pry %>
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'  
   gem 'annotate', '~> 2.6.5'
   gem 'kramdown', :groups => [:development], :require => false
-  gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
+  gem 'dotenv-rails', :groups => [:development, :test]
 end
 
 
