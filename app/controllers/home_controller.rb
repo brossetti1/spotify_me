@@ -6,7 +6,6 @@ class HomeController < ApplicationController
 
   def spotify_search
     @search_results = []
-    binding.pry
     if search_params
       tracks = RSpotify::Track.search(search_params, limit: 10)
       # artists = RSpotify::Artist.search('Arctic Monkeys')
