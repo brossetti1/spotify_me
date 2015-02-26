@@ -3,8 +3,8 @@
 <h4>search results for <span><%= @query %></span></h4>
 <% @search_results.each do |song| %>
   <ul>
-    <li>song: <%= song.name %>,
-        spotify id: <%= song.id %>, 
+    <li><%= song.name %>,
+      <!--  spotify id: <%= song.id %>, -->
         <!-- images_urls: <#%= song.images %>, -->
         spotify popularity <%= song.popularity %>
     </li>
