@@ -1,38 +1,36 @@
 # == Route Map
 #
-#                   Prefix Verb   URI Pattern                     Controller#Action
-#         new_user_session GET    /users/sign_in(.:format)        devise/sessions#new
-#             user_session POST   /users/sign_in(.:format)        devise/sessions#create
-#     destroy_user_session DELETE /users/sign_out(.:format)       devise/sessions#destroy
-#            user_password POST   /users/password(.:format)       devise/passwords#create
-#        new_user_password GET    /users/password/new(.:format)   devise/passwords#new
-#       edit_user_password GET    /users/password/edit(.:format)  devise/passwords#edit
-#                          PATCH  /users/password(.:format)       devise/passwords#update
-#                          PUT    /users/password(.:format)       devise/passwords#update
-# cancel_user_registration GET    /users/cancel(.:format)         devise/registrations#cancel
-#        user_registration POST   /users(.:format)                devise/registrations#create
-#    new_user_registration GET    /users/sign_up(.:format)        devise/registrations#new
-#   edit_user_registration GET    /users/edit(.:format)           devise/registrations#edit
-#                          PATCH  /users(.:format)                devise/registrations#update
-#                          PUT    /users(.:format)                devise/registrations#update
-#                          DELETE /users(.:format)                devise/registrations#destroy
-#                     vote POST   /users/:id/vote(.:format)       users#vote
-#                     veto POST   /users/:id/veto(.:format)       users#veto
-#               suggestion POST   /users/:id/suggestion(.:format) users#suggest
-#                     root GET    /                               home#index
-#           spotify_search GET    /search(.:format)               home#spotify_search
+#                   Prefix Verb   URI Pattern                    Controller#Action
+#         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
+#             user_session POST   /users/sign_in(.:format)       devise/sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+#            user_password POST   /users/password(.:format)      devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+#                          PATCH  /users/password(.:format)      devise/passwords#update
+#                          PUT    /users/password(.:format)      devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)        devise/registrations#cancel
+#        user_registration POST   /users(.:format)               devise/registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)       devise/registrations#new
+#   edit_user_registration GET    /users/edit(.:format)          devise/registrations#edit
+#                          PATCH  /users(.:format)               devise/registrations#update
+#                          PUT    /users(.:format)               devise/registrations#update
+#                          DELETE /users(.:format)               devise/registrations#destroy
+#                     vote POST   /vote/:song_id(.:format)       users#vote
+#                     veto POST   /veto/:song_id(.:format)       users#veto
+#               suggestion POST   /suggestion(.:format)          users#suggestion
+#                     root GET    /                              home#index
+#           spotify_search GET    /search(.:format)              home#spotify_search
 #
 
 Rails.application.routes.draw do
-  devise_for :users do 
-    post 'users/:id/vote/:id', to: 'users#vote', as: :vote
-    post 'users/:id/veto/:id', to: 'users#veto', as: :veto
-  end
+  devise_for :users 
 
-
-post 'users/:id/suggestion', to: 'users#suggestion', as: :suggestion
-root to: 'home#index'
-get '/search', to: 'home#spotify_search', as: :spotify_search
+  post '/vote/:song_id', to: 'users#vote', as: :vote
+  post '/veto/:song_id', to: 'users#veto', as: :veto
+  post '/suggestion', to: 'users#suggestion', as: :suggestion
+  root to: 'home#index'
+  get '/search', to: 'home#spotify_search', as: :spotify_search
 
 
   # The priority is based upon order of creation: first created -> highest priority.

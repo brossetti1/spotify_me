@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_song, only: [:vote, :veto]
   before_action :song_id, only: [:suggestion]
 
   def vote
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def suggestion
     @song = Song.new()
-    @song.process_song(song_id)
+    @song.process_song(song_id, current_user)
     if @song.save
       redirect_to root_path, message: :ok
     else
@@ -23,12 +23,12 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def song_id
     params[:pick]
+  end
+
+  def set_song
+    @song = Song.find(params[:song_id])
   end
 
 end
