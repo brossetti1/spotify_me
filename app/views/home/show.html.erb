@@ -1,0 +1,15 @@
+<h2 style='margin-top: 150px;'>songs</h2>
+
+<h4>search results for <span><%= @query %></span></h4>
+<% @search_results.each do |song| %>
+  <ul>
+    <li>song: <%= song.name %>,
+        spotify id: <%= song.id %>, 
+        <!-- images_urls: <#%= song.images %>, -->
+        spotify popularity <%= song.popularity %>
+    </li>
+  </ul>
+  <% end %>
+
+
+  <h5><%= @count %> total tracks <%= @query %></h5>
