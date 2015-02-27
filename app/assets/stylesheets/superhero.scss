@@ -16,6 +16,18 @@
 	margin-top: 30px;
 }
 
+.alert.alert-dismissible.alert-info,
+.alert.alert-dismissible.alert-warning,
+.alert.alert-dismissible.alert-success,
+.alert.alert-dismissible.alert-danger {
+	position: absolute;
+	margin-top: 99px;
+	margin-left: 480px;
+	width: 50%;
+	text-align: center;
+	font-size: 20px;
+}
+
 body ul {
 	list-style-type: none;
 }

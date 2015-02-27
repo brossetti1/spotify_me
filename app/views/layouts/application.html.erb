@@ -20,19 +20,10 @@
 </head>
 <body>
 
-  <%= render "layouts/navbar" %>
+  <%= render "shared/navbar" %>
+    
 
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true"> <%= notice %> </span>
-  </button>
-
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <div class="alert alert-danger" role="alert">
-      <span aria-hidden="true"> <%= alert %> </span>
-    </div>
-  </button>
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
