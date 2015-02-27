@@ -33,7 +33,7 @@ class Vote < ActiveRecord::Base
     veto = Vote.new
     vote.user_id = user.id
     vote.song_id = song.id
-    vote.vote_type = 2
+    vote.vote_type = 'veto'
     vote.save
   end
 
