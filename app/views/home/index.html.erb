@@ -19,7 +19,7 @@
   <% spotify_link = 'https://accounts.spotify.com/authorize?' +
        { client_id: ENV['SPOTIFY_CLIENT_ID'],
          response_type: 'code',
-         redirect_uri: 'localhost:3000/spotify_oauth', 
+         redirect_uri: 'https://spotifyme.herokuapp.com/spotify_oauth', 
          scope: 'playlist-modify-public playlist-modify-private user-follow-modify'}.to_query %>
   <%= link_to "spotify", spotify_link %>
 </div>
