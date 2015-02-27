@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   before_action :song_id, only: [:suggestion]
 
   def vote
-    
   end
 
   def veto
+
   end
 
   def suggestion

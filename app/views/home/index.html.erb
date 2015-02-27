@@ -16,27 +16,19 @@
      <!-- end searchBar -->
 </div>
 
-
-
-
 <div class="row center-block songRankings">
   <!--<#% @playlist.current_week.each do |song|%> -->
   <h2>Top songs</h2>
   <h4>(current_week)</h4>
-  <h4 class="panel panel-default oneSpot"> <%= song_list[0] %> </h4>
-
-  <div class="col-xs-6 center-block">
-    <% song_list[1..12].each do |x|%>
+  <h2 class="panel panel-default oneSpot"><%= first_song.title %> : 
+                                          <%= first_song.artist %> </h2>
+    <% 9.times do |x| %>                                     
+  <div class="row center-block songRankings">
     <ul class="list-group">
-        <li class="list-group-item"><%= x %></li>
+        <li class="list-group-item"><%= song_list %> : 
+                                    <%= artist_list %></li>
     </ul>
-    <% end %>
   </div>
-  <div class="col-xs-6 center-block">
-    <% song_list[13..24].each do |x|%>
-    <ul class="list-group">
-        <li class="list-group-item"><%= x %></li>
-    </ul>
     <% end %>
   </div>
 </div>

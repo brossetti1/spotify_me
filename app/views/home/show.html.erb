@@ -6,13 +6,14 @@
   <% @search_results.each do |song| %>
     <li>
     
-        <h3>song: <%= song.name %>,
-            artist: <%= song.artists.first.name %>,
+        <h3><span style="color:#169d82">song:</span> <%= song.name %>,
+            <span style="color:#169d82">artist:</span> <%= song.artists.first.name %>,
         <!-- images_urls: <#%= song.images %>, -->
-        spotify popularity <%= song.popularity %></h3>
+        <span style="color:#169d82">spotify popularity</span> <%= song.popularity %></h3>
 
       <div class="submitSong">
-        <%= form_tag suggestion_path(current_user, pick: song.id), method: 'post' %>
+        <%= form_tag suggestion_path(current_user, pick: song.id), 
+                                      method: 'post' %>
         <%= submit_tag 'suggest song', :class => "btn btn-primary btn-lg" %>
       </div>
     </li>
