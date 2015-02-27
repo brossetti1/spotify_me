@@ -31,8 +31,10 @@
     <% song_list.each do |x|%>
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
-        artist: <%= x.artist %> 
-        song: <%= x.title %>
+        <%= x.title %>
+        by
+        <%= x.artist %> 
+        
 
       </h4>
     </ul>
