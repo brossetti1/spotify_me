@@ -9,7 +9,7 @@ class UsersController < ApplicationController
                        code: params['code'],
                        redirect_uri: "https://spotifyme.herokuapp.com/spotify_oauth" 
                                         }
-      client_id_and_secret = Base64.strict_encode64("#{SPOTIFY_CLIENT_ID}:#{SPOTIFY_SECRET}")
+      client_id_and_secret = Base64.strict_encode64("#{client_id}:#{client_secret}")
 
       response = HTTParty.post("https://accounts.spotify.com/api/token", 
                                 body: body_params, 
