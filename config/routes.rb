@@ -26,13 +26,6 @@
 Rails.application.routes.draw do
   devise_for :users 
 
-resources :links do
-  member do
-    put "like", to: "links#upvote"
-    put "dislike", to: "links#downvote"
-    end
-  end
-
   post '/vote/:song_id', to: 'users#vote', as: :vote
   post '/veto/:song_id', to: 'users#veto', as: :veto
   post '/suggestion', to: 'users#suggestion', as: :suggestion

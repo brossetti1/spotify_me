@@ -13,8 +13,9 @@
 #
 
 class Song < ActiveRecord::Base
-  has_and_belongs_to_many :users
-
+  has_many :users, through: :votes
+  has_many :weekly_songs, through: :votes
+  has_many :votes
 
 
   def process_song(spotify_id, user)
