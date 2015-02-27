@@ -3,19 +3,18 @@ class UsersController < ApplicationController
   before_action :set_song, only: [:vote, :veto]
   before_action :song_id, only: [:suggestion]
 
-  def spotify_authorize
-    binding.pry
-    redirect_to 'https://accounts.spotify.com/authorize', 
-                client_id: ENV['SPOTIFY_CLIENT_ID'],
-                response_type: 'code',
-                redirect_uri: 'localhost:3000/spotify_oauth', 
-                scope: 'playlist-modify-public playlist-modify-private user-follow-modify', 
-                show_dialog: false
-
-  end
-
   def spotify_oauth
-    binding.pry
+    if params["code"] 
+      query_params = { grant_type: "authorization_code",
+                                        code: params['code'],
+                                        redirect_uri: "https://spotifyme.herokuapp.com/spotify_oauth", 
+                                        }
+      header_params = {client_id: "711994bb7f124b9a9575d4681dea8012"
+                       client_secret: "a771de0b3adb4a93bc62a63908e73a8d"}
+      response = HTTParty.post("https://accounts.spotify.com/api/token", 
+                                query: query_params, 
+                                headers: header_params)
+    end
   end
 
   def vote
