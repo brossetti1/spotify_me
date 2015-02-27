@@ -3,6 +3,21 @@ class UsersController < ApplicationController
   before_action :set_song, only: [:vote, :veto]
   before_action :song_id, only: [:suggestion]
 
+  def spotify_authorize
+    binding.pry
+    redirect_to 'https://accounts.spotify.com/authorize', 
+                client_id: ENV['SPOTIFY_CLIENT_ID'],
+                response_type: 'code',
+                redirect_uri: 'localhost:3000/spotify_oauth', 
+                scope: 'playlist-modify-public playlist-modify-private user-follow-modify', 
+                show_dialog: false
+
+  end
+
+  def spotify_oauth
+    binding.pry
+  end
+
   def vote
    # binding.pry
     if current_user.can_vote?

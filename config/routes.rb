@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   post '/suggestion', to: 'users#suggestion', as: :suggestion
   root to: 'home#index'
   get '/search', to: 'home#spotify_search', as: :spotify_search
-
+  get '/spotify_authorize', to: 'users#spotify_authorize', as: 'spotify_authorize'
+  get '/spotify_oauth', to: 'users#spotify_oauth', as: 'spotify_oauth'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
