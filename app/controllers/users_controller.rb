@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :song_id, only: [:suggestion]
 
   def spotify_oauth
-    if params["code"] 
+    if params[:code] 
       body_params = { client_id: CLIENT_ID,
                       client_secret: CLIENT_SECRET,
                       grant_type: "authorization_code",
