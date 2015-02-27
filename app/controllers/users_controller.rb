@@ -9,8 +9,8 @@ class UsersController < ApplicationController
                                         code: params['code'],
                                         redirect_uri: "https://spotifyme.herokuapp.com/spotify_oauth" 
                                         }
-      header_params = {client_id: "711994bb7f124b9a9575d4681dea8012",
-                       client_secret: "a771de0b3adb4a93bc62a63908e73a8d"}
+      header_params = {:client_id => "711994bb7f124b9a9575d4681dea8012",
+                       :client_secret => "a771de0b3adb4a93bc62a63908e73a8d"}
       response = HTTParty.post("https://accounts.spotify.com/api/token", 
                                 query: query_params, 
                                 headers: header_params)
