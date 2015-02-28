@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def spotify_oauth
     if params[:code] 
-      body_params = { client_id: CLIENT_ID,
-                      client_secret: CLIENT_SECRET,
+      body_params = { client_id: ENV['SPOTIFY_CLIENT_ID'],
+                      client_secret: ENV['SPOTIFY_CLIENT_SECRET'],
                       grant_type: "authorization_code",
                       code: params['code'],
-                      redirect_uri: "https://spotifyme.herokuapp.com/spotify_oauth" 
+                      redirect_uri: "localhost:3000/spotify_oauth" 
                     }
       response = HTTParty.post("https://accounts.spotify.com/api/token", 
                                 body: body_params)
