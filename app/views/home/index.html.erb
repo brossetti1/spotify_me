@@ -37,7 +37,9 @@
     <% song_list.each do |x|%>
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
-        <%= x.title %> by <%= x.artist %> 
+        <%= x.title %> by <%= x.artist %>
+        <p><%= link_to 'vote', vote_path %><%= Song.first.votes.count %> | <%= link_to 'veto', veto_path %><%= Song.first.vetoes.count %></p>
+        
         
 
       </h4>

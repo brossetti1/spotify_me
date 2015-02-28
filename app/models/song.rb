@@ -16,6 +16,7 @@ class Song < ActiveRecord::Base
   has_many :users, through: :votes
   has_many :weekly_songs, through: :votes
   has_many :votes
+  has_many :vetoes
 
 
   def process_song(spotify_id, user)

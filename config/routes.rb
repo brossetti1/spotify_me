@@ -26,8 +26,8 @@
 Rails.application.routes.draw do
   devise_for :users 
 
-  post '/vote/:song_id', to: 'users#vote', as: :vote
-  post '/veto/:song_id', to: 'users#veto', as: :veto
+  get '/vote', to: 'users#vote', as: :vote
+  get '/veto', to: 'users#veto', as: :veto
   post '/suggestion', to: 'users#suggestion', as: :suggestion
   root to: 'home#index'
   get '/search', to: 'home#spotify_search', as: :spotify_search

@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 
   def veto
     if current_user.can_veto?
-      Vote.veto(@song, current_user)
-      flash[:notice] = "your vote has been added to #{@song.title}."
+      Veto.veto(@song, current_user)
+      flash[:notice] = "your veto has been added to #{@song.title}."
       redirect_to root_path, message: :ok
     else
       flash[:alert] = "you have no more vetos remaining"
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def set_song
-    @song = Song.find(params[:song_id])
+    @song = Song.find(1)
   end
 
 end

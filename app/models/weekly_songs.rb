@@ -14,4 +14,5 @@ class WeeklySongs < ActiveRecord::Base
   has_many :songs, through: :votes
   has_many :users, through: :votes
   has_many :votes
+  has_many :vetoes
 end

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :songs, through: :votes
   has_many :weekly_songs, through: :votes
   has_many :votes
+  has_many :vetoes
 
 
   def process_vote

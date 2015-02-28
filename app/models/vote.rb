@@ -31,10 +31,10 @@ class Vote < ActiveRecord::Base
   
   def self.veto(song, user)
     veto = Vote.new
-    vote.user_id = user.id
-    vote.song_id = song.id
-    vote.vote_type = 'veto'
-    vote.save
+    veto.user_id = user.id
+    veto.song_id = song.id
+    veto.vote_type = 'veto'
+    veto.save
   end
 
 
