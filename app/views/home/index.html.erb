@@ -38,10 +38,8 @@
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
         <%= x.title %> by <%= x.artist %>
-        <p><%= link_to 'vote', vote_path %><%= Song.first.votes.count %> | <%= link_to 'veto', veto_path %><%= Song.first.vetoes.count %></p>
+        <h3><%= link_to 'vote', vote_path %><%= x.votes.count %> | <%= link_to 'veto', veto_path %><%= x.vetoes.count %></h3>
         
-        
-
       </h4>
     </ul>
     <% end %>
