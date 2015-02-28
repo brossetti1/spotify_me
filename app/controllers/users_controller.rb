@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def set_song
-    @song = Song.find(1)
+    @song = Song.find_by(params[:song_id])
   end
 
 end
