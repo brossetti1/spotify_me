@@ -3,8 +3,21 @@ class UsersController < ApplicationController
   before_action :set_song, only: [:vote, :veto]
   before_action :song_id, only: [:suggestion]
 
+  def spotify_oauth
+    if params[:code] 
+      body_params = { client_id: ENV['SPOTIFY_CLIENT_ID'],
+                      client_secret: ENV['SPOTIFY_CLIENT_SECRET'],
+                      grant_type: "authorization_code",
+                      code: params['code'],
+                      redirect_uri: "localhost:3000/spotify_oauth" 
+                    }
+      response = HTTParty.post("https://accounts.spotify.com/api/token", 
+                                body: body_params)
+    end
+  end
+
   def vote
-    binding.pry
+   # binding.pry
     if current_user.can_vote?
       Vote.vote(@song, current_user)
       flash[:notice] = "your vote has been added to #{@song.title}."
@@ -17,8 +30,8 @@ class UsersController < ApplicationController
 
   def veto
     if current_user.can_veto?
-      Vote.veto(@song, current_user)
-      flash[:notice] = "your vote has been added to #{@song.title}."
+      Veto.veto(@song, current_user)
+      flash[:notice] = "your veto has been added to #{@song.title}."
       redirect_to root_path, message: :ok
     else
       flash[:alert] = "you have no more vetos remaining"
@@ -27,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def suggestion
-    binding.pry
+  #  binding.pry
     song_found = Song.find_by_spotify_id(song_id)
     if current_user.can_vote?
       if song_found == nil
@@ -56,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def set_song
-    @song = Song.find(params[:song_id])
+    @song = Song.find(1)
   end
 
 end

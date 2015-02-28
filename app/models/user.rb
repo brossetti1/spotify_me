@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :songs, through: :votes
   has_many :weekly_songs, through: :votes
   has_many :votes
+  has_many :vetoes
 
 
   def process_vote
@@ -49,6 +50,42 @@ class User < ActiveRecord::Base
 
   def can_veto?
     self.veto_count == 1
+  end
+
+  def token?
+    access_token && !token_expired?
+  end
+ 
+  def token_expired?
+    Time.now > expires_at
+  end
+ 
+  def refresh!
+    token_opts = {
+      :client_id => ENV["SPOTIFY_CLIENT_ID"],
+      :client_secret => ENV["SPOTIFY_CLIENT_SECRET"],
+      :grant_type => 'refresh_token',
+      :refresh_token => self.refresh_token
+    }
+    response = HTTParty.post("https://accounts.spotify.com/api/token",
+                             :body => token_opts)
+    self.update(:access_token => response[:access_token],
+                :expires_at => Time.now + response[:expires_in])
+  end
+ 
+  def get_token!(auth_code)
+    token_opts = {
+      :client_id => ENV["SPOTIFY_CLIENT_ID"],
+      :client_secret => ENV["SPOTIFY_CLIENT_SECRET"],
+      :grant_type => 'authorization_code',
+      :code => auth_code,
+      :redirect_uri => my_new_token_path(self)
+    }
+    response = HTTParty.post("https://accounts.spotify.com/api/token",
+                             :body => token_opts)
+    self.update(:access_token => response[:access_token],
+                :refresh_token => response[:refresh_token],
+                :expires_at => Time.now + response[:expires_in])
   end
 
 end

@@ -26,12 +26,13 @@
 Rails.application.routes.draw do
   devise_for :users 
 
-  post '/vote/:song_id', to: 'users#vote', as: :vote
-  post '/veto/:song_id', to: 'users#veto', as: :veto
+  get '/vote', to: 'users#vote', as: :vote
+  get '/veto', to: 'users#veto', as: :veto
   post '/suggestion', to: 'users#suggestion', as: :suggestion
   root to: 'home#index'
   get '/search', to: 'home#spotify_search', as: :spotify_search
-
+  get '/spotify_authorize', to: 'users#spotify_authorize', as: 'spotify_authorize'
+  get '/spotify_oauth', to: 'users#spotify_oauth', as: 'spotify_oauth'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,7 @@
 module HomeHelper
   
   def song_list
-    Song.all.sample(10)
+    Song.all.order([:votes].count)
   end
 
 end

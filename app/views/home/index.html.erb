@@ -16,6 +16,12 @@
     </div>
 </div>
      <!-- end searchBar -->
+  <% spotify_link = 'https://accounts.spotify.com/authorize?' +
+       { client_id: ENV['SPOTIFY_CLIENT_ID'],
+         redirect_uri: 'localhost:3000/spotify_oauth',
+         response_type: 'code', 
+         scope: 'playlist-modify-public playlist-modify-private user-follow-modify'}.to_query %>
+  <%= link_to "spotify", spotify_link %>
 </div>
 
 
@@ -31,8 +37,10 @@
     <% song_list.each do |x|%>
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
-        artist: <%= x.artist %> 
-        song: <%= x.title %>
+        <%= x.title %> by <%= x.artist %>
+        <p><%= link_to 'vote', vote_path %><%= Song.first.votes.count %> | <%= link_to 'veto', veto_path %><%= Song.first.vetoes.count %></p>
+        
+        
 
       </h4>
     </ul>
