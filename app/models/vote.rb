@@ -15,8 +15,8 @@
 #vote_type = 2 => veto
 
 class Vote < ActiveRecord::Base
-  has_many :user
-  has_many :song
+  has_many :users
+  has_many :songs
 
 
 
@@ -33,7 +33,8 @@ class Vote < ActiveRecord::Base
     veto.user_id = user.id
     veto.song_id = song.id
     veto.vote_type = 'veto'
-    user.process_vote
+    binding.pry
+    user.process_veto
     veto.save
   end
 

@@ -38,4 +38,8 @@ class Song < ActiveRecord::Base
     Song.all.to_a.sort_by {|song| song.votes.count}
   end
 
+  def veto_count
+    self.votes.where(vote_type: "veto").count
+  end
+
 end

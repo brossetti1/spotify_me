@@ -36,7 +36,7 @@
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
         <%= song.title %> by <%= song.artist %>
-        <h3><%= link_to 'vote', vote_path(song_id: song.id) %><%= song.votes.count %> | <%= link_to 'veto', veto_path(song_id: song.id) %><%= song.vetoes.count %></h3>
+        <h3><%= link_to 'vote', vote_path(song_id: song.id) %><%= song.votes.count %> | <%= link_to 'veto', veto_path(song_id: song.id) %><%= song.veto_count %></h3>
         
       </h4>
     </ul>
