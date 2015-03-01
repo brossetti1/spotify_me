@@ -16,11 +16,12 @@
 #                          PATCH  /users(.:format)               devise/registrations#update
 #                          PUT    /users(.:format)               devise/registrations#update
 #                          DELETE /users(.:format)               devise/registrations#destroy
-#                     vote POST   /vote/:song_id(.:format)       users#vote
-#                     veto POST   /veto/:song_id(.:format)       users#veto
+#                     vote GET    /vote(.:format)                users#vote
+#                     veto GET    /veto(.:format)                users#veto
 #               suggestion POST   /suggestion(.:format)          users#suggestion
 #                     root GET    /                              home#index
 #           spotify_search GET    /search(.:format)              home#spotify_search
+#            spotify_oauth GET    /spotify_oauth(.:format)       users#spotify_oauth
 #
 
 Rails.application.routes.draw do
@@ -31,7 +32,6 @@ Rails.application.routes.draw do
   post '/suggestion', to: 'users#suggestion', as: :suggestion
   root to: 'home#index'
   get '/search', to: 'home#spotify_search', as: :spotify_search
-  get '/spotify_authorize', to: 'users#spotify_authorize', as: 'spotify_authorize'
   get '/spotify_oauth', to: 'users#spotify_oauth', as: 'spotify_oauth'
 
   # The priority is based upon order of creation: first created -> highest priority.

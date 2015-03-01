@@ -49,10 +49,9 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry'
-  gem 'faker'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
+  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

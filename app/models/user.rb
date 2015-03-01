@@ -15,8 +15,11 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  votes                  :integer          default("5")
-#  veto                   :integer          default("1")
+#  vote_count             :integer          default("5")
+#  veto_count             :integer          default("1")
+#  access_token           :string
+#  refresh_token          :string
+#  expire_token_time      :datetime
 #
 
 class User < ActiveRecord::Base
@@ -25,9 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :songs, through: :votes
-  has_many :weekly_songs, through: :votes
   has_many :votes
-  has_many :vetoes
 
 
   def process_vote
