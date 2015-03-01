@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def vote
-   # binding.pry
     if current_user.can_vote?
       Vote.vote(@song, current_user)
       flash[:notice] = "your vote has been added to #{@song.title}."
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def suggestion
-  #  binding.pry
     song_found = Song.find_by_spotify_id(song_id)
     if current_user.can_vote?
       if song_found == nil
@@ -69,7 +67,7 @@ class UsersController < ApplicationController
   end
 
   def set_song
-    @song = Song.find_by(params[:song_id])
+    @song = Song.find(params[:song_id])
   end
 
 end

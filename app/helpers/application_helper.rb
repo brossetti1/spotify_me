@@ -5,7 +5,6 @@ module ApplicationHelper
   end
 
   def bootstrap_class_for(flash_type)
-  #  binding.pry
     case flash_type.to_sym
       when :success
         "alert-dismissible alert-success"

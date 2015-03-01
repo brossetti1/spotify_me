@@ -32,11 +32,11 @@
 
 
   <div class="col-xs-12 center-block">
-    <% song_list.each do |x|%>
+    <% song_list.each do |song|%>
     <ul class="list-group">
       <h4 class="panel panel-default oneSpot"> 
-        <%= x.title %> by <%= x.artist %>
-        <h3><%= link_to 'vote', vote_path %><%= x.votes.count %> | <%= link_to 'veto', veto_path %><%= x.vetoes.count %></h3>
+        <%= song.title %> by <%= song.artist %>
+        <h3><%= link_to 'vote', vote_path(song_id: song.id) %><%= song.votes.count %> | <%= link_to 'veto', veto_path(song_id: song.id) %><%= song.vetoes.count %></h3>
         
       </h4>
     </ul>

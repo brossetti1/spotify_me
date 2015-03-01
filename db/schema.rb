@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20150228213010) do
     t.integer  "user_id"
     t.integer  "weekly_songs_id"
     t.integer  "song_id"
-    t.string   "vote_type",       default: "vote"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "vote_type",       default: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "weekly_songs", force: :cascade do |t|
