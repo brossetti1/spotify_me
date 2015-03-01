@@ -1,11 +1,18 @@
 module ApplicationHelper
 
   def votes_left
-    3 #TODO - come back once db tables are up
+    current_user.votes_remaining?
+  end
+
+  def views_veto
+    current_user.can_veto? ? 1 : 0
+  end
+
+  def humanize_veto
+    current_user.can_veto? ? "veto" : "vetos"
   end
 
   def bootstrap_class_for(flash_type)
-    binding.pry
     case flash_type.to_sym
       when :success
         "alert-dismissible alert-success"

@@ -25,10 +25,18 @@ class Song < ActiveRecord::Base
     self.spotify_id = spotify_id
     self.album = track.album.name
     self.user_id = user.id
+    self.save
   end
 
   def self.find_track(id)
     RSpotify::Track.find(id)
+  end
+
+  def sort_by_most_votes
+  end
+
+  def vote_count
+    self.votes.count
   end
 
 end

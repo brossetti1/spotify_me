@@ -16,4 +16,44 @@
 //= require superhero/bootswatch
 //= require turbolinks
 
+var resultsPlaceholder = $('#jumbotronicon')
+
+
+var fetchTracks = function (albumId, callback) {
+$.ajax({
+    url: 'https://api.spotify.com/v1/albums/' + albumId,
+    success: function (response) {
+        callback(response);
+    	}
+	});
+
+}
+
+var searchAlbums = function (query) {
+    $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        data: {
+            q: query,
+            type: 'album'
+        },
+        success: function (response) {
+            resultsPlaceholder.template(response);
+        }
+    });
+};
+
+	
+
+
+$('#search_query').on('submit', function (e) {
+	e.preventDefault;
+	searchAlbums($("#search_query").value);	
+});
+// .addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     var x = searchAlbums(document.getElementById('search_query').value);
+//     console.log(x);
+// }); 
+
+
 

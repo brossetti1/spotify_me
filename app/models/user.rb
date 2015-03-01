@@ -51,4 +51,8 @@ class User < ActiveRecord::Base
     self.veto_count == 1
   end
 
+  def votes_remaining?
+    self.vote_count
+  end
+
 end

@@ -52,6 +52,9 @@ group :development, :test do
   gem 'pry'
   gem 'faker'
 
+  #github markdown converter for README
+  #gem 'markup'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

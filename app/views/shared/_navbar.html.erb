@@ -8,7 +8,11 @@
           <a class="navbar-brand" href="#">Spotify-ME</a>
         </div>
         <div class="voteRemaining">
-          <li >You have <span class='label label-default' id="votesLeft"><%=votes_left%></span> votes left</li>
+          <li >You have 
+            <span class='label label-default' id="votesLeft"><%= votes_left %></span> 
+            votes left and <span class='label label-default' id="votesLeft"><%= views_veto %></span>
+            <%= humanize_veto %>
+          </li>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

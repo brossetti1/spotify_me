@@ -1,6 +1,6 @@
 <%= render partial: "shared/flash_messages", flash: flash %> 
 
-<div class="jumbotron jumboSections">
+<div class="jumbotron jumboSections" id="jumbotronicon">
     <div class="form-group form-inline searchWrap"> <!-- start searchBar --> <div>
         <%= form_tag spotify_search_path, method: 'get' do %>
         <%= text_field_tag 'search_query', 

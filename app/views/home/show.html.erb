@@ -12,7 +12,7 @@
         spotify popularity <%= song.popularity %></h3>
 
       <div class="submitSong">
-        <%= form_tag suggestion_path(pick: song.id), method: 'post' %>
+        <%= form_tag suggestion_path(pick: song.id), method: 'post', remote: true %>
         <%= submit_tag 'suggest song', :class => "btn btn-primary btn-lg" %>
       </div>
     </li>
