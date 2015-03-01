@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def spotify_search
     @search_results = []
     if search_params
-      tracks = RSpotify::Track.search(search_params, limit: 10)
+      tracks = RSpotify::Track.search(search_params, limit: 25)
       # artists = RSpotify::Artist.search(search_params, limit: 10)
       # playlists = RSpotify::Playlist.search('Indie')
       # albums = RSpotify::Album.search('The Wall')

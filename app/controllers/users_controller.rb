@@ -29,12 +29,13 @@ class UsersController < ApplicationController
 
   def veto
     if current_user.can_veto?
-      Veto.veto(@song, current_user)
+      binding.pry
+      Vote.veto(@song, current_user)
       flash[:notice] = "your veto has been added to #{@song.title}."
       redirect_to root_path, message: :ok
     else
       flash[:alert] = "you have no more vetos remaining"
-      redirect_to root_path, status: :unprocessable_entity
+      redirect_to root_path #, status: :unprocessable_entity
     end
   end
 
